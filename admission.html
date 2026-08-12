@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admission - Goshnai Montessori Academy</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+    <img src="images/school-logo.png"
+         alt="School Logo"
+         class="school-logo">
+
+    <h1>Goshnai Montessori Academy</h1>
+
+    <p>Admission Application</p>
+
+</header>
+
+
+<nav>
+
+    <div class="menu">
+
+        <a href="index.html">Home</a>
+
+        <a href="about.html">About Us</a>
+
+        <a href="admission.html">Admission</a>
+
+        <a href="fees.html">School Fees</a>
+
+        <a href="gallery.html">Gallery</a>
+
+        <a href="contact.html">Contact</a>
+
+    </div>
+
+</nav>
+
+
+<main>
+
+<section class="admission-section">
+
+    <h2>Admission Application Form</h2>
+
+    <p>
+        Please complete the form below to apply for admission
+        into Goshnai Montessori Academy.
+    </p>
+
+
+    <form id="admissionForm">
+
+
+        <h3>Student Information</h3>
+
+
+        <label for="studentName">
+            Student Full Name
+        </label>
+
+        <input
+            type="text"
+            id="studentName"
+            placeholder="Enter student's full name"
+            required
+        >
+
+
+        <label for="studentAge">
+            Student Age
+        </label>
+
+        <input
+            type="number"
+            id="studentAge"
+            placeholder="Enter student's age"
+            required
+        >
+
+
+        <label for="studentClass">
+            Class Applying For
+        </label>
+
+        <select id="studentClass" required>
+
+            <option value="">
+                Select Class
+            </option>
+
+            <option>Nursery 1</option>
+            <option>Nursery 2</option>
+            <option>Primary 1</option>
+            <option>Primary 2</option>
+            <option>Primary 3</option>
+            <option>Primary 4</option>
+            <option>Primary 5</option>
+            <option>Primary 6</option>
+            <option>JSS 1</option>
+            <option>JSS 2</option>
+            <option>JSS 3</option>
+            <option>SS 1</option>
+            <option>SS 2</option>
+            <option>SS 3</option>
+
+        </select>
+<label for="academicSession">
+    Academic Session
+</label>
+
+<select id="academicSession" required>
+
+    <option value="">
+        Select Academic Session
+    </option>
+
+    <option value="2026/2027">
+        2026/2027
+    </option>
+
+    <option value="2027/2028">
+        2027/2028
+    </option>
+
+    <option value="2028/2029">
+        2028/2029
+    </option>
+
+    <option value="2029/2030">
+        2029/2030
+    </option>
+
+</select>
+
+        <h3>Parent / Guardian Information</h3>
+
+
+        <label for="parentName">
+            Parent / Guardian Name
+        </label>
+
+        <input
+            type="text"
+            id="parentName"
+            placeholder="Enter parent or guardian name"
+            required
+        >
+
+
+        <label for="phone">
+            Phone Number
+        </label>
+
+        <input
+            type="tel"
+            id="phone"
+            placeholder="Enter phone number"
+            required
+        >
+
+
+        <label for="email">
+            Email Address
+        </label>
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Enter email address"
+            required
+        >
+
+
+        <label for="address">
+            Home Address
+        </label>
+
+        <textarea
+            id="address"
+            placeholder="Enter home address"
+            required
+        ></textarea>
+
+
+        <button type="submit">
+            Submit Application
+        </button>
+
+
+    </form>
+
+</section>
+
+</main>
+
+
+<footer class="footer">
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 Goshnai Montessori Academy
+        </p>
+
+        <p>
+            In Excellence Pursuit, We Believe
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="admission.js"></script>
+
+</body>
+
+</html>
