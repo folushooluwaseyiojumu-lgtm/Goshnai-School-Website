@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admission Applications</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+    <img src="images/school-logo.png"
+         alt="School Logo"
+         class="school-logo">
+
+    <h1>Admission Applications</h1>
+
+    <p>Administrator Panel</p>
+
+</header>
+
+<nav>
+
+    <div class="menu">
+
+        <a href="index.html">Home</a>
+        <a href="admission.html">Admission</a>
+        <a href="fees.html">School Fees</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+
+    </div>
+
+</nav>
+
+<main>
+
+<section class="applications-section">
+
+    <h2>Submitted Applications</h2>
+
+    <div class="application-filter">
+
+    <label for="applicationSession">
+        Academic Session:
+    </label>
+
+    <select
+        id="applicationSession"
+        onchange="filterApplicationsBySession()">
+
+        <option value="">All Sessions</option>
+
+        <option value="2026/2027">2026/2027</option>
+        <option value="2027/2028">2027/2028</option>
+        <option value="2028/2029">2028/2029</option>
+        <option value="2029/2030">2029/2030</option>
+
+    </select>
+
+</div>
+
+
+<div id="applicationsList">
+    <p>Loading applications...</p>
+</div>
+
+</section>
+
+</main>
+
+<footer class="footer">
+
+    <div class="footer-bottom">
+
+        <p>© 2026 Goshnai Montessori Academy</p>
+
+    </div>
+
+</footer>
+
+<script src="admissions-admin.js"></script>
+</body>
+
+</html>
