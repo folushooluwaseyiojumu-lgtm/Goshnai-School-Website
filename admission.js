@@ -1,8 +1,23 @@
-const admissionForm = document.getElementById("admissionForm");
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAOV_UEz729PW5D6tA4qmiaLjvZWjibRgU",
+  authDomain: "goshnai-montessori-academy.firebaseapp.com",
+  projectId: "goshnai-montessori-academy",
+  storageBucket: "goshnai-montessori-academy.firebasestorage.app",
+  messagingSenderId: "57941031873",
+  appId: "1:57941031873:web:29dd46bdde69babfb3cd40",
+  measurementId: "G-Y55X06QPZG"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+ const admissionForm = document.getElementById("admissionForm");
 
 if (admissionForm) {
 
-    admissionForm.addEventListener("submit", function(event) {
+    admissionForm.addEventListener("submit", async function(event) {
 
         event.preventDefault();
 
@@ -33,22 +48,13 @@ academicSession:
         };
 
 
-        let applications = JSON.parse(
-            localStorage.getItem("admissionApplications")
-        ) || [];
+await addDoc(
+    collection(db, "admissionApplications"),
+    application
+);
 
 
-        applications.push(application);
-
-
-        localStorage.setItem(
-            "admissionApplications",
-            JSON.stringify(applications)
-        );
-
-
-        alert(
-            "Admission application submitted successfully!\n\n" +
+    alert("Admission application submitted successfully!"); +
             "Total applications saved: " +
             applications.length
         );
