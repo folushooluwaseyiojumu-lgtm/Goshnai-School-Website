@@ -337,15 +337,17 @@ try {
         }
     );
 
-} catch (error) {
+}catch (error) {
 
     console.error(error);
 
     alert(
-        "Failed to update status in Firebase."
+        "Firebase Error: " + error.message
     );
 
     return;
+
+
 
 }
 
