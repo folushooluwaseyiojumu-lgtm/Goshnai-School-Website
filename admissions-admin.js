@@ -27,7 +27,7 @@ const applicationsList =
     document.getElementById("applicationsList");
 
 let applications = [];
-async function load application (){
+async function loadApplications() {
     const querySnapshot =
         await getDocs(
             collection(
@@ -324,7 +324,11 @@ async function updateStatusByApplication(
 
     application.status =
         status;
-try {
+        try {
+
+    console.log(application);
+    console.log(application.id);
+
 
     await updateDoc(
         doc(
@@ -336,20 +340,20 @@ try {
             status: status
         }
     );
-alert("Status updated successfully!");
-}catch (error) {
+
+    alert("Status updated successfully!");
+
+} catch (error) {
 
     console.error(error);
 
-    alert(
-        "Firebase Error: " + error.message
-    );
+    alert("Firebase Error: " + error.message);
 
     return;
-
-
-
 }
+
+
+
 
     // =================================
     // APPROVED
@@ -581,10 +585,7 @@ function deleteApplicationByNumber(
         });
 
 
-    localStorage.setItem(
-        "admissionApplications",
-        JSON.stringify(applications)
-    );
+    
 
 
     displayApplications();
