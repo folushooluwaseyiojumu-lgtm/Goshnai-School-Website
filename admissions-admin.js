@@ -336,7 +336,7 @@ try {
             status: status
         }
     );
-
+alert("Status updated successfully!");
 }catch (error) {
 
     console.error(error);
