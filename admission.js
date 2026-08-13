@@ -65,14 +65,6 @@ try {
 
 }
 
-    alert("Admission application submitted successfully!"); +
-            "Total applications saved: " +
-            applications.length
-        );
-
-
-        admissionForm.reset();
-
     });
 
 }
