@@ -3,67 +3,66 @@
 // SCHOOL FEES SYSTEM
 // =====================================
 
-
 // =====================================
 // GET STUDENT FEES
 // =====================================
 
 function getStudentFees(studentClass) {
 
-    const className =
-        (studentClass || "").toLowerCase();
+const className =  
+    (studentClass || "").toLowerCase();  
 
-    let annualTuition = 0;
-    let uniformFee = 0;
+let annualTuition = 0;  
+let uniformFee = 0;  
 
-    if (className.includes("nursery")) {
+if (className.includes("nursery")) {  
 
-        annualTuition = 100000;
-        uniformFee = 10000;
+    annualTuition = 100000;  
+    uniformFee = 10000;  
 
-    } else if (className.includes("primary")) {
+} else if (className.includes("primary")) {  
 
-        annualTuition = 120000;
-        uniformFee = 12000;
+    annualTuition = 120000;  
+    uniformFee = 12000;  
 
-    } else if (className.includes("jss")) {
+} else if (className.includes("jss")) {  
 
-        annualTuition = 150000;
-        uniformFee = 15000;
+    annualTuition = 150000;  
+    uniformFee = 15000;  
 
-    } else if (className.includes("ss")) {
+} else if (className.includes("ss")) {  
 
-        annualTuition = 180000;
-        uniformFee = 15000;
-    }
-
-
-    const termFee =
-        annualTuition / 3;
+    annualTuition = 180000;  
+    uniformFee = 15000;  
+}  
 
 
-    return {
+const termFee =  
+    annualTuition / 3;  
 
-        annualTuition: annualTuition,
 
-        termFee: termFee,
+return {  
 
-        uniformFee: uniformFee,
+    annualTuition: annualTuition,  
 
-        firstTermNewStudent:
-            termFee + uniformFee,
+    termFee: termFee,  
 
-        secondTerm:
-            termFee,
+    uniformFee: uniformFee,  
 
-        thirdTerm:
-            termFee,
+    firstTermNewStudent:  
+        termFee + uniformFee,  
 
-        totalAnnual:
-            annualTuition + uniformFee
-    };
+    secondTerm:  
+        termFee,  
+
+    thirdTerm:  
+        termFee,  
+
+    totalAnnual:  
+        annualTuition + uniformFee  
+};
+
 }
-
 
 // =====================================
 // GET STUDENTS
@@ -71,23 +70,23 @@ function getStudentFees(studentClass) {
 
 function getStudents() {
 
-    try {
+try {  
 
-        return JSON.parse(
-            localStorage.getItem("students")
-        ) || [];
+    return JSON.parse(  
+        localStorage.getItem("students")  
+    ) || [];  
 
-    } catch (error) {
+} catch (error) {  
 
-        console.error(
-            "Error loading students:",
-            error
-        );
+    console.error(  
+        "Error loading students:",  
+        error  
+    );  
 
-        return [];
-    }
+    return [];  
 }
 
+}
 
 // =====================================
 // SAVE STUDENTS
@@ -95,12 +94,12 @@ function getStudents() {
 
 function saveStudents(students) {
 
-    localStorage.setItem(
-        "students",
-        JSON.stringify(students)
-    );
-}
+localStorage.setItem(  
+    "students",  
+    JSON.stringify(students)  
+);
 
+}
 
 // =====================================
 // DISPLAY STUDENTS
@@ -108,101 +107,100 @@ function saveStudents(students) {
 
 function displayFeeStudents(students) {
 
-    const container =
-        document.getElementById("feeStudents");
+const container =  
+    document.getElementById("feeStudents");  
 
 
-    if (!container) {
+if (!container) {  
 
-        console.error(
-            "feeStudents element not found."
-        );
+    console.error(  
+        "feeStudents element not found."  
+    );  
 
-        return;
-    }
-
-
-    container.innerHTML = "";
+    return;  
+}  
 
 
-    if (!students || students.length === 0) {
-
-        container.innerHTML = `
-            <p>No student found.</p>
-        `;
-
-        return;
-    }
+container.innerHTML = "";  
 
 
-    students.forEach(function(student) {
+if (!students || students.length === 0) {  
 
-        const fees =
-            getStudentFees(
-                student.studentClass
-            );
+    container.innerHTML = `  
+        <p>No student found.</p>  
+    `;  
 
-
-        const isNewStudent =
-            student.isNewStudent === true ||
-            student.isNewStudent === "true" ||
-            student.studentType === "New Student";
+    return;  
+}  
 
 
-        container.innerHTML += `
+students.forEach(function(student) {  
 
-            <div class="student-fee-option">
+    const fees =  
+        getStudentFees(  
+            student.studentClass  
+        );  
 
-                <label>
 
-                    <input
-                        type="checkbox"
-                        class="fee-student-checkbox"
-                        value="${student.id}"
-                        onchange="showSelectedFees()"
-                    >
+    const isNewStudent =  
+        student.isNewStudent === true ||  
+        student.isNewStudent === "true" ||  
+        student.studentType === "New Student";  
 
-                    <strong>
-                        ${student.name || "Unnamed Student"}
-                    </strong>
 
-                    -
-                    ${student.studentClass || "No Class"}
+    container.innerHTML += `  
 
-                    -
-                    ${
-                        student.academicSession ||
-                        "2026/2027"
-                    }
+        <div class="student-fee-option">  
 
-                    <br>
+            <label>  
 
-                    <span>
-                        Annual Tuition:
-                        ₦${fees.annualTuition.toLocaleString()}
-                    </span>
+                <input  
+                    type="checkbox"  
+                    class="fee-student-checkbox"  
+                    value="${student.id}"  
+                    onchange="showSelectedFees()"  
+                >  
 
-                    <br>
+                <strong>  
+                    ${student.name || "Unnamed Student"}  
+                </strong>  
 
-                    <span>
-                        Student Type:
-                        ${
-                            isNewStudent
-                            ? "New Student"
-                            : "Returning Student"
-                        }
-                    </span>
+                -  
+                ${student.studentClass || "No Class"}  
 
-                </label>
+                -  
+                ${  
+                    student.academicSession ||  
+                    "2026/2027"  
+                }  
 
-            </div>
+                <br>  
 
-        `;
+                <span>  
+                    Annual Tuition:  
+                    ₦${fees.annualTuition.toLocaleString()}  
+                </span>  
 
-    });
+                <br>  
+
+                <span>  
+                    Student Type:  
+                    ${  
+                        isNewStudent  
+                        ? "New Student"  
+                        : "Returning Student"  
+                    }  
+                </span>  
+
+            </label>  
+
+        </div>  
+
+    `;  
+
+});
 
 }
-
 
 // =====================================
 // LOAD STUDENTS
@@ -210,20 +208,20 @@ function displayFeeStudents(students) {
 
 function loadFeeStudents() {
 
-    console.log(
-        "Loading school fee students..."
-    );
+console.log(  
+    "Loading school fee students..."  
+);  
 
 
-    const students =
-        getStudents();
+const students =  
+    getStudents();  
 
 
-    displayFeeStudents(
-        students
-    );
+displayFeeStudents(  
+    students  
+);
+
 }
-
 
 // =====================================
 // SEARCH STUDENTS
@@ -231,63 +229,63 @@ function loadFeeStudents() {
 
 function searchStudents() {
 
-    const input =
-        document.getElementById(
-            "studentSearch"
-        );
+const input =  
+    document.getElementById(  
+        "studentSearch"  
+    );  
 
 
-    if (!input) {
-        return;
-    }
+if (!input) {  
+    return;  
+}  
 
 
-    const search =
-        input.value
-            .toLowerCase()
-            .trim();
+const search =  
+    input.value  
+        .toLowerCase()  
+        .trim();  
 
 
-    const students =
-        getStudents();
+const students =  
+    getStudents();  
 
 
-    const filteredStudents =
-        students.filter(function(student) {
+const filteredStudents =  
+    students.filter(function(student) {  
 
-            const name =
-                String(
-                    student.name || ""
-                ).toLowerCase();
-
-
-            const studentClass =
-                String(
-                    student.studentClass || ""
-                ).toLowerCase();
+        const name =  
+            String(  
+                student.name || ""  
+            ).toLowerCase();  
 
 
-            const session =
-                String(
-                    student.academicSession ||
-                    "2026/2027"
-                ).toLowerCase();
+        const studentClass =  
+            String(  
+                student.studentClass || ""  
+            ).toLowerCase();  
 
 
-            return (
-                name.includes(search) ||
-                studentClass.includes(search) ||
-                session.includes(search)
-            );
-
-        });
+        const session =  
+            String(  
+                student.academicSession ||  
+                "2026/2027"  
+            ).toLowerCase();  
 
 
-    displayFeeStudents(
-        filteredStudents
-    );
+        return (  
+            name.includes(search) ||  
+            studentClass.includes(search) ||  
+            session.includes(search)  
+        );  
+
+    });  
+
+
+displayFeeStudents(  
+    filteredStudents  
+);
+
 }
-
 
 // =====================================
 // GET SELECTED STUDENTS
@@ -295,21 +293,21 @@ function searchStudents() {
 
 function getSelectedStudentIds() {
 
-    const checkboxes =
-        document.querySelectorAll(
-            ".fee-student-checkbox:checked"
-        );
+const checkboxes =  
+    document.querySelectorAll(  
+        ".fee-student-checkbox:checked"  
+    );  
 
 
-    return Array.from(
-        checkboxes
-    ).map(function(checkbox) {
+return Array.from(  
+    checkboxes  
+).map(function(checkbox) {  
 
-        return checkbox.value;
+    return checkbox.value;  
 
-    });
+});
+
 }
-
 
 // =====================================
 // SHOW SELECTED FEES
@@ -317,326 +315,325 @@ function getSelectedStudentIds() {
 
 function showSelectedFees() {
 
-    const selectedIds =
-        getSelectedStudentIds();
+const selectedIds =  
+    getSelectedStudentIds();  
 
 
-    const feeDetails =
-        document.getElementById(
-            "feeDetails"
-        );
+const feeDetails =  
+    document.getElementById(  
+        "feeDetails"  
+    );  
 
 
-    const termSelect =
-        document.getElementById(
-            "feeTerm"
-        );
+const termSelect =  
+    document.getElementById(  
+        "feeTerm"  
+    );  
 
 
-    if (!feeDetails) {
-        return;
-    }
+if (!feeDetails) {  
+    return;  
+}  
 
 
-    const selectedTerm =
-        termSelect
-        ? termSelect.value
-        : "";
+const selectedTerm =  
+    termSelect  
+    ? termSelect.value  
+    : "";  
 
 
-    // Hide bank transfer box
-    const transferBox =
-        document.getElementById(
-            "bankTransferBox"
-        );
+// Hide bank transfer box  
+const transferBox =  
+    document.getElementById(  
+        "bankTransferBox"  
+    );  
 
 
-    if (transferBox) {
+if (transferBox) {  
 
-        transferBox.style.display =
-            "none";
+    transferBox.style.display =  
+        "none";  
 
-        transferBox.innerHTML =
-            "";
+    transferBox.innerHTML =  
+        "";  
 
-    }
+}  
 
 
-    // No students selected
-    if (selectedIds.length === 0) {
+// No students selected  
+if (selectedIds.length === 0) {  
 
-        feeDetails.innerHTML = `
+    feeDetails.innerHTML = `  
 
-            <p>
-                Select one or more children
-                to view their fees.
-            </p>
+        <p>  
+            Select one or more children  
+            to view their fees.  
+        </p>  
 
-        `;
+    `;  
 
-        return;
-    }
+    return;  
+}  
 
 
-    // No term selected
-    if (!selectedTerm) {
+// No term selected  
+if (!selectedTerm) {  
 
-        feeDetails.innerHTML = `
+    feeDetails.innerHTML = `  
 
-            <p>
-                Please select First Term,
-                Second Term or Third Term.
-            </p>
+        <p>  
+            Please select First Term,  
+            Second Term or Third Term.  
+        </p>  
 
-        `;
+    `;  
 
-        return;
-    }
+    return;  
+}  
 
 
-    const students =
-        getStudents();
+const students =  
+    getStudents();  
 
 
-    let totalAmountToPay = 0;
+let totalAmountToPay = 0;  
 
-    let childrenHTML = "";
+let childrenHTML = "";  
 
 
-    selectedIds.forEach(function(id) {
+selectedIds.forEach(function(id) {  
 
-        const student =
-            students.find(function(item) {
+    const student =  
+        students.find(function(item) {  
 
-                return String(item.id) ===
-                       String(id);
+            return String(item.id) ===  
+                   String(id);  
 
-            });
+        });  
 
 
-        if (!student) {
-            return;
-        }
+    if (!student) {  
+        return;  
+    }  
 
 
-        const fees =
-            getStudentFees(
-                student.studentClass
-            );
+    const fees =  
+        getStudentFees(  
+            student.studentClass  
+        );  
 
 
-        const isNewStudent =
-            student.isNewStudent === true ||
-            student.isNewStudent === "true" ||
-            student.studentType === "New Student";
+    const isNewStudent =  
+        student.isNewStudent === true ||  
+        student.isNewStudent === "true" ||  
+        student.studentType === "New Student";  
 
 
-        // =================================
-        // TERM FEE
-        // =================================
+    // =================================  
+    // TERM FEE  
+    // =================================  
 
-        const termFee =
-            fees.termFee;
+    const termFee =  
+        fees.termFee;  
 
 
-        // =================================
-        // UNIFORM
-        // =================================
+    // =================================  
+    // UNIFORM  
+    // =================================  
 
-        let uniform = 0;
+    let uniform = 0;  
 
 
-        if (
-            isNewStudent &&
-            selectedTerm === "First Term"
-        ) {
+    if (  
+        isNewStudent &&  
+        selectedTerm === "First Term"  
+    ) {  
 
-            uniform =
-                fees.uniformFee;
+        uniform =  
+            fees.uniformFee;  
 
-        }
+    }  
 
 
-        const amountDue =
-            termFee + uniform;
+    const amountDue =  
+        termFee + uniform;  
 
 
-        // =================================
-        // TERM PAYMENT
-        // =================================
+    // =================================  
+    // TERM PAYMENT  
+    // =================================  
 
-        let amountPaidForTerm = 0;
+    let amountPaidForTerm = 0;  
 
 
-        if (student.termPayments) {
+    if (student.termPayments) {  
 
-            amountPaidForTerm =
-                Number(
-                    student.termPayments[
-                        selectedTerm
-                    ] || 0
-                );
+        amountPaidForTerm =  
+            Number(  
+                student.termPayments[  
+                    selectedTerm  
+                ] || 0  
+            );  
 
-        }
+    }  
 
 
-        const outstanding =
-            Math.max(
-                0,
-                amountDue -
-                amountPaidForTerm
-            );
+    const outstanding =  
+        Math.max(  
+            0,  
+            amountDue -  
+            amountPaidForTerm  
+        );  
 
 
-        totalAmountToPay +=
-            outstanding;
+    totalAmountToPay +=  
+        outstanding;  
 
 
-        // =================================
-        // CHILD DISPLAY
-        // =================================
+    // =================================  
+    // CHILD DISPLAY  
+    // =================================  
 
-        childrenHTML += `
+    childrenHTML += `  
 
-            <div class="fee-card">
+        <div class="fee-card">  
 
-                <h3>
-                    ${student.name}
-                </h3>
+            <h3>  
+                ${student.name}  
+            </h3>  
 
-                <p>
-                    <strong>
-                        Class:
-                    </strong>
+            <p>  
+                <strong>  
+                    Class:  
+                </strong>  
 
-                    ${student.studentClass}
-                </p>
+                ${student.studentClass}  
+            </p>  
 
-                <p>
-                    <strong>
-                        Academic Session:
-                    </strong>
+            <p>  
+                <strong>  
+                    Academic Session:  
+                </strong>  
 
-                    ${
-                        student.academicSession ||
-                        "2026/2027"
-                    }
-                </p>
+                ${  
+                    student.academicSession ||  
+                    "2026/2027"  
+                }  
+            </p>  
 
-                <p>
-                    <strong>
-                        Term:
-                    </strong>
+            <p>  
+                <strong>  
+                    Term:  
+                </strong>  
 
-                    ${selectedTerm}
-                </p>
+                ${selectedTerm}  
+            </p>  
 
-                <p>
-                    <strong>
-                        Term Tuition:
-                    </strong>
+            <p>  
+                <strong>  
+                    Term Tuition:  
+                </strong>  
 
-                    ₦${termFee.toLocaleString()}
-                </p>
+                ₦${termFee.toLocaleString()}  
+            </p>  
 
-                ${
-                    uniform > 0
-                    ?
+            ${  
+                uniform > 0  
+                ?  
 
-                    `
-                    <p>
-                        <strong>
-                            New Student Uniform:
-                        </strong>
+                `  
+                <p>  
+                    <strong>  
+                        New Student Uniform:  
+                    </strong>  
 
-                        ₦${uniform.toLocaleString()}
-                    </p>
-                    `
+                    ₦${uniform.toLocaleString()}  
+                </p>  
+                `  
 
-                    :
+                :  
 
-                    ""
-                }
+                ""  
+            }  
 
-                <p>
-                    <strong>
-                        Amount Due:
-                    </strong>
+            <p>  
+                <strong>  
+                    Amount Due:  
+                </strong>  
 
-                    ₦${amountDue.toLocaleString()}
-                </p>
+                ₦${amountDue.toLocaleString()}  
+            </p>  
 
-                <p>
-                    <strong>
-                        Already Paid:
-                    </strong>
+            <p>  
+                <strong>  
+                    Already Paid:  
+                </strong>  
 
-                    ₦${amountPaidForTerm.toLocaleString()}
-                </p>
+                ₦${amountPaidForTerm.toLocaleString()}  
+            </p>  
 
-                <p>
-                    <strong>
-                        Outstanding:
-                    </strong>
+            <p>  
+                <strong>  
+                    Outstanding:  
+                </strong>  
 
-                    ₦${outstanding.toLocaleString()}
-                </p>
+                ₦${outstanding.toLocaleString()}  
+            </p>  
 
-            </div>
+        </div>  
 
-        `;
+    `;  
 
-    });
+});  
 
 
-    // =================================
-    // DISPLAY TOTAL
-    // =================================
+// =================================  
+// DISPLAY TOTAL  
+// =================================  
 
-    feeDetails.innerHTML = `
+feeDetails.innerHTML = `  
 
-        <h3>
-            Selected Children
-        </h3>
+    <h3>  
+        Selected Children  
+    </h3>  
 
-        ${childrenHTML}
+    ${childrenHTML}  
 
-        <hr>
+    <hr>  
 
-        <h2>
-            ${selectedTerm}
-            Total Amount to Pay:
-            ₦${totalAmountToPay.toLocaleString()}
-        </h2>
+    <h2>  
+        ${selectedTerm}  
+        Total Amount to Pay:  
+        ₦${totalAmountToPay.toLocaleString()}  
+    </h2>  
 
-        ${
-            totalAmountToPay > 0
+    ${  
+        totalAmountToPay > 0  
 
-            ?
+        ?  
 
-            `
-            <button
-                type="button"
-                onclick="openBankTransfer()">
+        `  
+        <button  
+            type="button"  
+            onclick="openBankTransfer()">  
 
-                Pay by Bank Transfer
+            Pay by Bank Transfer  
 
-            </button>
-            `
+        </button>  
+        `  
 
-            :
+        :  
 
-            `
-            <p>
-                This term has been fully paid.
-            </p>
-            `
-        }
+        `  
+        <p>  
+            This term has been fully paid.  
+        </p>  
+        `  
+    }  
 
-    `;
+`;
 
 }
-
 
 // =====================================
 // OPEN BANK TRANSFER
@@ -644,366 +641,363 @@ function showSelectedFees() {
 
 function openBankTransfer() {
 
-    const selectedIds =
-        getSelectedStudentIds();
+const selectedIds =  
+    getSelectedStudentIds();  
 
 
-    const termSelect =
-        document.getElementById(
-            "feeTerm"
-        );
+const termSelect =  
+    document.getElementById(  
+        "feeTerm"  
+    );  
 
 
-    const selectedTerm =
-        termSelect
-        ? termSelect.value
-        : "";
+const selectedTerm =  
+    termSelect  
+    ? termSelect.value  
+    : "";  
 
 
-    if (selectedIds.length === 0) {
+if (selectedIds.length === 0) {  
 
-        alert(
-            "Please select at least one child."
-        );
+    alert(  
+        "Please select at least one child."  
+    );  
 
-        return;
-    }
+    return;  
+}  
 
 
-    if (!selectedTerm) {
+if (!selectedTerm) {  
 
-        alert(
-            "Please select a term."
-        );
+    alert(  
+        "Please select a term."  
+    );  
 
-        return;
-    }
+    return;  
+}  
 
 
-    const students =
-        getStudents();
+const students =  
+    getStudents();  
 
 
-    let selectedStudents = [];
+let selectedStudents = [];  
 
-    let totalBalance = 0;
+let totalBalance = 0;  
 
 
-    selectedIds.forEach(function(id) {
+selectedIds.forEach(function(id) {  
 
-        const student =
-            students.find(function(item) {
+    const student =  
+        students.find(function(item) {  
 
-                return String(item.id) ===
-                       String(id);
+            return String(item.id) ===  
+                   String(id);  
 
-            });
+        });  
 
 
-        if (!student) {
-            return;
-        }
+    if (!student) {  
+        return;  
+    }  
 
 
-        const fees =
-            getStudentFees(
-                student.studentClass
-            );
+    const fees =  
+        getStudentFees(  
+            student.studentClass  
+        );  
 
 
-        const isNewStudent =
-            student.isNewStudent === true ||
-            student.isNewStudent === "true" ||
-            student.studentType === "New Student";
+    const isNewStudent =  
+        student.isNewStudent === true ||  
+        student.isNewStudent === "true" ||  
+        student.studentType === "New Student";  
 
 
-        const termFee =
-            fees.termFee;
+    const termFee =  
+        fees.termFee;  
 
 
-        let uniform = 0;
+    let uniform = 0;  
 
 
-        if (
-            isNewStudent &&
-            selectedTerm === "First Term"
-        ) {
+    if (  
+        isNewStudent &&  
+        selectedTerm === "First Term"  
+    ) {  
 
-            uniform =
-                fees.uniformFee;
+        uniform =  
+            fees.uniformFee;  
 
-        }
+    }  
 
 
-        const amountDue =
-            termFee + uniform;
+    const amountDue =  
+        termFee + uniform;  
 
 
-        let amountPaidForTerm = 0;
+    let amountPaidForTerm = 0;  
 
 
-        if (student.termPayments) {
+    if (student.termPayments) {  
 
-            amountPaidForTerm =
-                Number(
-                    student.termPayments[
-                        selectedTerm
-                    ] || 0
-                );
+        amountPaidForTerm =  
+            Number(  
+                student.termPayments[  
+                    selectedTerm  
+                ] || 0  
+            );  
 
-        }
+    }  
 
 
-        const balance =
-            Math.max(
-                0,
-                amountDue -
-                amountPaidForTerm
-            );
+    const balance =  
+        Math.max(  
+            0,  
+            amountDue -  
+            amountPaidForTerm  
+        );  
 
 
-        if (balance > 0) {
+    if (balance > 0) {  
 
-            selectedStudents.push({
+        selectedStudents.push({  
 
-                student: student,
+            student: student,  
 
-                amountDue: amountDue,
+            amountDue: amountDue,  
 
-                amountPaid:
-                    amountPaidForTerm,
+            amountPaid:  
+                amountPaidForTerm,  
 
-                balance: balance
+            balance: balance  
 
-            });
+        });  
 
 
-            totalBalance +=
-                balance;
+        totalBalance +=  
+            balance;  
 
-        }
+    }  
 
-    });
+});  
 
 
-    if (selectedStudents.length === 0) {
+if (selectedStudents.length === 0) {  
 
-        alert(
-            "The selected students have no outstanding balance for " +
-            selectedTerm +
-            "."
-        );
+    alert(  
+        "The selected students have no outstanding balance for " +  
+        selectedTerm +  
+        "."  
+    );  
 
-        return;
-    }
+    return;  
+}  
 
 
-    const reference =
-        "GMA-" +
-        Date.now();
+const reference =  
+    "GMA-" +  
+    Date.now();  
 
 
-    const transferBox =
-        document.getElementById(
-            "bankTransferBox"
-        );
+const transferBox =  
+    document.getElementById(  
+        "bankTransferBox"  
+    );  
 
 
-    if (!transferBox) {
+if (!transferBox) {  
 
-        alert(
-            "Bank transfer section not found."
-        );
+    alert(  
+        "Bank transfer section not found."  
+    );  
 
-        return;
-    }
+    return;  
+}  
 
 
-    transferBox.style.display =
-        "block";
+transferBox.style.display =  
+    "block";  
 
 
-    let childrenHTML = "";
+let childrenHTML = "";  
 
 
-    selectedStudents.forEach(function(item) {
+selectedStudents.forEach(function(item) {  
 
-        const student =
-            item.student;
+    const student =  
+        item.student;  
 
 
-        childrenHTML += `
+    childrenHTML += `  
 
-            <div class="fee-card">
+        <div class="fee-card">  
 
-                <p>
-                    <strong>
-                        ${student.name}
-                    </strong>
-                </p>
+            <p>  
+                <strong>  
+                    ${student.name}  
+                </strong>  
+            </p>  
 
-                <p>
-                    Class:
-                    ${student.studentClass}
-                </p>
+            <p>  
+                Class:  
+                ${student.studentClass}  
+            </p>  
 
-                <p>
-                    Term:
-                    ${selectedTerm}
-                </p>
+            <p>  
+                Term:  
+                ${selectedTerm}  
+            </p>  
 
-                <p>
-                    Amount Due:
-                    ₦${item.amountDue.toLocaleString()}
-                </p>
+            <p>  
+                Amount Due:  
+                ₦${item.amountDue.toLocaleString()}  
+            </p>  
 
-                <p>
-                    Already Paid:
-                    ₦${item.amountPaid.toLocaleString()}
-                </p>
+            <p>  
+                Already Paid:  
+                ₦${item.amountPaid.toLocaleString()}  
+            </p>  
 
-                <p>
-                    <strong>
-                        Outstanding:
-                        ₦${item.balance.toLocaleString()}
-                    </strong>
-                </p>
+            <p>  
+                <strong>  
+                    Outstanding:  
+                    ₦${item.balance.toLocaleString()}  
+                </strong>  
+            </p>  
 
-            </div>
+        </div>  
 
-        `;
+    `;  
 
-    });
+});  
 
 
-    // =================================
-    // BANK DETAILS
-    // =================================
+// =================================  
+// BANK DETAILS  
+// =================================  
 
-    transferBox.innerHTML = `
+transferBox.innerHTML = `  
 
-        <div class="fee-card">
+    <div class="fee-card">  
 
-            <h3>
-                🏦 Bank Transfer
-            </h3>
+        <h3>  
+            🏦 Bank Transfer  
+        </h3>  
 
-            <p>
-                <strong>
-                    Payment Term:
-                </strong>
+        <p>  
+            <strong>  
+                Payment Term:  
+            </strong>  
 
-                ${selectedTerm}
-            </p>
+            ${selectedTerm}  
+        </p>  
 
-            <p>
-                You are paying for
+        <p>  
+            You are paying for  
 
-                <strong>
-                    ${selectedStudents.length}
-                    child${
-                        selectedStudents.length > 1
-                        ? "ren"
-                        : ""
-                    }
-                </strong>.
-            </p>
+            <strong>  
+                ${selectedStudents.length}  
+                child${  
+                    selectedStudents.length > 1  
+                    ? "ren"  
+                    : ""  
+                }  
+            </strong>.  
+        </p>  
 
-            <hr>
+        <hr>  
 
-            ${childrenHTML}
+        ${childrenHTML}  
 
-            <hr>
+        <hr>  
 
-            <h3>
-                Total Transfer Amount:
-                ₦${totalBalance.toLocaleString()}
-            </h3>
+        <h3>  
+            Total Transfer Amount:  
+            ₦${totalBalance.toLocaleString()}  
+        </h3>  
 
-            <hr>
+        <hr>  
 
-            <p>
-                Transfer the payment to:
-            </p>
+        <p>  
+            Transfer the payment to:  
+        </p>  
 
-            <p>
-                <strong>
-                    Bank:
-                </strong>
+        <p>  
+            <strong>  
+                Bank:  
+            </strong>  
 
-                SCHOOL BANK
-            </p>
+            SCHOOL BANK  
+        </p>  
 
-            <p>
-                <strong>
-                    Account Name:
-                </strong>
+        <p>  
+            <strong>  
+                Account Name:  
+            </strong>  
 
-                Goshnai Montessori Academy
-            </p>
+            Goshnai Montessori Academy  
+        </p>  
 
-            <p>
-                <strong>
-                    Account Number:
-                </strong>
+        <p>  
+            <strong>  
+                Account Number:  
+            </strong>  
 
-                XXXXXXXX
-            </p>
+            XXXXXXXX  
+        </p>  
 
-            <p>
-                <strong>
-                    Payment Reference:
-                </strong>
-            </p>
+        <p>  
+            <strong>  
+                Payment Reference:  
+            </strong>  
+        </p>  
 
-            <p id="paymentReference">
-                ${reference}
-            </p>
+        <p id="paymentReference">  
+            ${reference}  
+        </p>  
 
-            <label for="transferAmount">
-                Amount Transferred
-            </label>
+        <label for="transferAmount">  
+            Amount Transferred  
+        </label>  
 
-            <input
-                type="number"
-                id="transferAmount"
-                placeholder="Enter amount transferred"
-                min="1"
-                max="${totalBalance}"
-            >
+        <input  
+            type="number"  
+            id="transferAmount"  
+            placeholder="Enter amount transferred"  
+            min="1"  
+            max="${totalBalance}"  
+        >  
 
-            <br><br>
+        <br><br>  
 
-            <button
-                type="button"
-                onclick="submitTransfer()">
+        <button  
+            type="button"  
+            onclick="submitTransfer()">  
 
-                I Have Made the Transfer
+            I Have Made the Transfer  
 
-            </button>
+        </button>  
 
-        </div>
+    </div>  
 
-    `;
+`;  
 
 
-    const paymentStatus =
-        document.getElementById(
-            "paymentStatus"
-        );
+const paymentStatus =  
+    document.getElementById(  
+        "paymentStatus"  
+    );  
 
 
-    if (paymentStatus) {
+if (paymentStatus) {  
 
-        paymentStatus.innerHTML =
-            "";
-
-    }
+    paymentStatus.innerHTML =  
+        "";  
 
 }
 
-
-
+}
 
 // =====================================
 // SUBMIT BANK TRANSFER
@@ -1130,4 +1124,77 @@ function submitTransfer() {
         // New students pay uniform
         // only in First Term
 
-      
+        if (
+            isNewStudent &&
+            selectedTerm === "First Term"
+        ) {
+
+            uniform =
+                fees.uniformFee;
+
+        }
+
+
+        const amountDue =
+            termFee + uniform;
+
+
+        let amountPaidForTerm = 0;
+
+
+        if (student.termPayments) {
+
+            amountPaidForTerm =
+                Number(
+                    student.termPayments[
+                        selectedTerm
+                    ] || 0
+                );
+
+        }
+
+
+        const balance =
+            Math.max(
+                0,
+                amountDue -
+                amountPaidForTerm
+            );
+
+
+        if (balance > 0) {
+
+            selectedStudents.push({
+
+                student: student,
+
+                balance: balance
+
+            });
+
+
+            totalBalance +=
+                balance;
+
+        }
+
+    });
+
+
+    // =================================
+    // CHECK PAYMENT AMOUNT
+    // =================================
+
+    if (amount > totalBalance) {
+
+        alert(
+            "The amount entered is greater than the outstanding balance.\n\n" +
+            "Maximum amount: ₦" +
+            totalBalance.toLocaleString()
+        );
+
+        return;
+    }
+
+
+    // =========
