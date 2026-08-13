@@ -3,7 +3,9 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebas
 import {
   getFirestore,
   collection,
-  getDocs
+  getDocs,
+  doc,
+  updateDoc
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 const firebaseConfig = {
   apiKey: "AIzaSyAOV_UEz729PW5D6tA4qmiaLjvZWjibRgU",
@@ -303,9 +305,7 @@ function findApplication(applicationNumber) {
 // APPROVE / REJECT
 // =====================================
 
-function updateStatusByApplication(
-    applicationNumber,
-    status
+async function updateStatusByApplication(
 ) {
 
     const application =
@@ -324,7 +324,30 @@ function updateStatusByApplication(
 
     application.status =
         status;
+try {
 
+    await updateDoc(
+        doc(
+            db,
+            "admissionApplications",
+            application.id
+        ),
+        {
+            status: status
+        }
+    );
+
+} catch (error) {
+
+    console.error(error);
+
+    alert(
+        "Failed to update status in Firebase."
+    );
+
+    return;
+
+}
 
     // =================================
     // APPROVED
@@ -508,14 +531,9 @@ function updateStatusByApplication(
     // SAVE APPLICATIONS
     // =================================
 
-    localStorage.setItem(
-        "admissionApplications",
-        JSON.stringify(applications)
-    );
 
-
-    displayApplications();
-
+  loadApplications();
+  
 }
 
 
