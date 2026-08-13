@@ -47,12 +47,23 @@ academicSession:
 
         };
 
+try {
 
-await addDoc(
-    collection(db, "admissionApplications"),
-    application
-);
+    await addDoc(
+        collection(db, "admissionApplications"),
+        application
+    );
 
+    alert("Admission application submitted successfully!");
+
+    admissionForm.reset();
+
+} catch (error) {
+
+    console.error(error);
+    alert("Firebase Error: " + error.message);
+
+}
 
     alert("Admission application submitted successfully!"); +
             "Total applications saved: " +
