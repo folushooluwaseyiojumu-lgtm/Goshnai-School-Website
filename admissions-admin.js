@@ -27,8 +27,7 @@ const applicationsList =
     document.getElementById("applicationsList");
 
 let applications = [];
-async function loadApplications() {
-
+async function load application (){
     const querySnapshot =
         await getDocs(
             collection(
@@ -306,8 +305,9 @@ function findApplication(applicationNumber) {
 // =====================================
 
 async function updateStatusByApplication(
+    applicationNumber,
+    status
 ) {
-
     const application =
         findApplication(applicationNumber);
 
