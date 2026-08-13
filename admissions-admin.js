@@ -1,3 +1,21 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import {
+  getFirestore,
+  collection,
+  getDocs
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+const firebaseConfig = {
+  apiKey: "AIzaSyAOV_UEz729PW5D6tA4qmiaLjvZWjibRgU",
+  authDomain: "goshnai-montessori-academy.firebaseapp.com",
+  projectId: "goshnai-montessori-academy",
+  storageBucket: "goshnai-montessori-academy.firebasestorage.app",
+  messagingSenderId: "57941031873",
+  appId: "1:57941031873:web:29dd46bdde69babfb3cd40"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 // =====================================
 // GOSHNAI MONTESSORI ACADEMY
 // ADMISSION ADMIN
@@ -6,11 +24,31 @@
 const applicationsList =
     document.getElementById("applicationsList");
 
-let applications =
-    JSON.parse(
-        localStorage.getItem("admissionApplications")
-    ) || [];
+let applications = [];
+async function loadApplications() {
 
+    const querySnapshot =
+        await getDocs(
+            collection(
+                db,
+                "admissionApplications"
+            )
+        );
+
+    applications = [];
+
+    querySnapshot.forEach((doc) => {
+
+        applications.push({
+            id: doc.id,
+            ...doc.data()
+        });
+
+    });
+
+    displayApplications();
+
+}
 
 // =====================================
 // GET TERM FEES
@@ -590,4 +628,12 @@ function filterApplicationsBySession() {
 // START
 // =====================================
 
-displayApplications();
+loadApplications();
+window.updateStatusByApplication =
+    updateStatusByApplication;
+
+window.deleteApplicationByNumber =
+    deleteApplicationByNumber;
+
+window.filterApplicationsBySession =
+    filterApplicationsBySession;
