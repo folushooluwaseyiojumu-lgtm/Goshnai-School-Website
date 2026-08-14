@@ -1198,3 +1198,6 @@ function submitTransfer() {
 
 
     // =========
+document.addEventListener("DOMContentLoaded", function () {
+    loadFeeStudents();
+});
