@@ -1185,6 +1185,7 @@ function submitTransfer() {
 
         return;
     }
+    alert("Payment submitted successfully");
 }
     // =====================================
 // LOAD PAGE
