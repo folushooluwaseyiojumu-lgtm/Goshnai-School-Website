@@ -1186,4 +1186,8 @@ function submitTransfer() {
         return;
     }
 
-    loadFeeStudents();
+    // =====================================
+// LOAD PAGE
+// =====================================
+
+loadFeeStudents();
