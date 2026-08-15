@@ -205,22 +205,12 @@ students.forEach(function(student) {
 // =====================================
 // LOAD STUDENTS
 // =====================================
-
 function loadFeeStudents() {
+    const students = JSON.parse(localStorage.getItem("students")) || [];
 
-console.log(  
-    "Loading school fee students..."  
-);  
+    console.log("Students found:", students);
 
-
-const students =  
-    getStudents();  
-
-
-displayFeeStudents(  
-    students  
-);
-
+    displayFeeStudents(students);
 }
 
 // =====================================
