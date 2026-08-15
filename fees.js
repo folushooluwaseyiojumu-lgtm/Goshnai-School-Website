@@ -1186,6 +1186,4 @@ function submitTransfer() {
         return;
     }
 
-
- document.addEventListener("DOMContentLoaded", function () {
     loadFeeStudents();
