@@ -1196,12 +1196,15 @@ payments.push({
     date: new Date().toLocaleString(),
     status: "Pending Verification",
     studentIds: selectedIds,
-    children: selectedStudents.map(item => ({
-        studentName: item.student.name,
-        studentClass: item.student.studentClass,
-        balance: item.balance
-    })),
-    term: selectedTerm
+    term: selectedTerm,
+
+    children: selectedStudents.map(function(item) {
+        return {
+            studentName: item.student.name,
+            studentClass: item.student.studentClass,
+            balance: item.balance
+        };
+    })
 });
 
 localStorage.setItem(
