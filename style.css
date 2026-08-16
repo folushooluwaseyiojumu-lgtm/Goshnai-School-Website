@@ -1434,3 +1434,46 @@ nav a:hover{
 body {
     background: red;
 }
+    body{
+    background:#0b4a8b;
+    font-family:Arial, sans-serif;
+}
+
+.login-container{
+    width:90%;
+    max-width:400px;
+    margin:100px auto;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 0 15px rgba(0,0,0,0.3);
+}
+
+.login-container h2{
+    text-align:center;
+    color:#0b4a8b;
+}
+
+.login-container input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:5px;
+    box-sizing:border-box;
+}
+
+.login-container button{
+    width:100%;
+    padding:12px;
+    background:#0b4a8b;
+    color:white;
+    border:none;
+    border-radius:5px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.login-container button:hover{
+    background:#08396b;
+}
