@@ -328,20 +328,36 @@ async function updateStatusByApplication(
 
     console.log(application);
     console.log(application.id);
+await updateDoc(
+    doc(
+        db,
+        "admissionApplications",
+        application.id
+    ),
+    {
+        status: status
+    }
+);
 
+if (status === "Approved" && application.phone) {
 
-    await updateDoc(
-        doc(
-            db,
-            "admissionApplications",
-            application.id
-        ),
-        {
-            status: status
-        }
+    const phone =
+        application.phone;
+
+    const message =
+        "Hello " +
+        application.parentName +
+        ", congratulations. Your child's admission application to Goshnai Montessori Academy has been approved.";
+
+    window.open(
+        "https://wa.me/234" +
+        phone.substring(1) +
+        "?text=" +
+        encodeURIComponent(message)
     );
+}
 
-    alert("Status updated successfully!");
+alert("Status updated successfully!");
 
 } catch (error) {
 
