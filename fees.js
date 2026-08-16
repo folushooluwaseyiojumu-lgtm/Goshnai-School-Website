@@ -1195,7 +1195,8 @@ payments.push({
     amount: amount,
     date: new Date().toLocaleString(),
     status: "Pending Verification",
-    studentIds: selectedIds
+    studentIds: selectedIds,
+    term: selectedTerm
 });
 
 localStorage.setItem(
@@ -1206,9 +1207,9 @@ localStorage.setItem(
 alert(
     "Payment submitted successfully and sent for verification."
 );
-    // =====================================
+}
+// =====================================
 // LOAD PAGE
 // =====================================
 
 loadFeeStudents();
-}
