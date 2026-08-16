@@ -1198,6 +1198,8 @@ payments.push({
     studentIds: selectedIds,
     term: selectedTerm,
 
+    phone: selectedStudents[0].student.phone,
+
     children: selectedStudents.map(function(item) {
         return {
             studentName: item.student.name,
