@@ -15,8 +15,16 @@
 </head>
 
 <body>
+<body>
+
+<script>
+if (localStorage.getItem("adminLoggedIn") !== "true") {
+    window.location.href = "admin-login.html";
+}
+</script>
 
 <header class="header">
+
 
     <h1>Goshnai Montessori Academy</h1>
 
