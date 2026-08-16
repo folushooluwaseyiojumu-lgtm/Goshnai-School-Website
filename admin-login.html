@@ -2,35 +2,60 @@
 <html>
 <head>
     <title>Admin Login</title>
-    <link rel="stylesheet" href="./style.css?v=5">
+
+    <style>
+        body{
+            background:#0b4a8b;
+            font-family:Arial,sans-serif;
+        }
+
+        .login-container{
+            width:90%;
+            max-width:450px;
+            margin:100px auto;
+            background:white;
+            padding:30px;
+            border-radius:10px;
+        }
+
+        .login-container h2{
+            font-size:32px;
+            text-align:center;
+            color:#0b4a8b;
+        }
+
+        .login-container input{
+            width:100%;
+            padding:15px;
+            margin:10px 0;
+            font-size:18px;
+            box-sizing:border-box;
+        }
+
+        .login-container button{
+            width:100%;
+            padding:15px;
+            font-size:18px;
+            background:#0b4a8b;
+            color:white;
+            border:none;
+        }
+    </style>
 </head>
 
-
-    <body>
+<body>
 
 <div class="login-container">
 
     <h2>Admin Login</h2>
 
-    <input
-        type="text"
-        id="username"
-        placeholder="Username">
+    <input type="text" placeholder="Username">
 
-    <input
-        type="password"
-        id="password"
-        placeholder="Password">
+    <input type="password" placeholder="Password">
 
-    <button onclick="loginAdmin()">
-        Login
-    </button>
+    <button>Login</button>
 
 </div>
 
-<script src="admin-login.js"></script>
-
-    
-    </body>
-
+</body>
 </html>
