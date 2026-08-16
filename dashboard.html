@@ -45,12 +45,13 @@ if (localStorage.getItem("adminLoggedIn") !== "true") {
         Students
     </a>
 
-    <a href="admin-exams.html">
-        Exams
-    </a>
+
 <a href="fees.html">
     School Fees
 </a>
+    <a href="#" onclick="logoutAdmin()">
+    Logout
+    </a>
 </nav>
 
 
@@ -224,7 +225,17 @@ if (localStorage.getItem("adminLoggedIn") !== "true") {
     </div>
 
 </footer>
+<script>
+function logoutAdmin() {
 
+    localStorage.removeItem(
+        "adminLoggedIn"
+    );
+
+    window.location.href =
+        "admin-login.html";
+}
+</script>
 
 <script src="dashboard.js"></script>
 
