@@ -555,10 +555,24 @@ student.termPayments[payment.term] =
     );
 
 
-    alert(
-        "Payment approved successfully!"
-    );
+if (payment.phone) {
 
+    const message =
+        "Hello, your payment of ₦" +
+        Number(payment.amount).toLocaleString() +
+        " has been approved by Goshnai Montessori Academy. Thank you.";
+
+    window.open(
+        "https://wa.me/234" +
+        payment.phone.substring(1) +
+        "?text=" +
+        encodeURIComponent(message)
+    );
+}
+
+alert(
+    "Payment approved successfully!"
+);
 
     loadPayments();
 
