@@ -341,6 +341,15 @@ function approvePayment(index) {
                         student.amountPaid || 0
                     ) +
                     amountForStudent;
+                if (!student.termPayments) {
+    student.termPayments = {};
+}
+
+student.termPayments[payment.term] =
+    Number(
+        student.termPayments[payment.term] || 0
+    ) +
+    amountForStudent;
 
 
                 student.balance =
