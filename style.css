@@ -1490,3 +1490,38 @@ body {
 .login-container button:hover{
     background:#08396b;
 }
+    body{
+    background:red;
+    font-family:Arial, sans-serif;
+}
+
+.login-container{
+    background:white;
+    padding:25px;
+    max-width:400px;
+    margin:100px auto;
+    border-radius:10px;
+}
+
+.login-container h2{
+    font-size:32px;
+    text-align:center;
+}
+
+.login-container input{
+    width:100%;
+    padding:15px;
+    margin:10px 0;
+    font-size:18px;
+    box-sizing:border-box;
+}
+
+.login-container button{
+    width:100%;
+    padding:15px;
+    font-size:18px;
+    background:#0b4a8b;
+    color:white;
+    border:none;
+    border-radius:5px;
+}
