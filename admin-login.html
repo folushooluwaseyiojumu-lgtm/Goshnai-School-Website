@@ -3,44 +3,60 @@
 <head>
     <title>Admin Login</title>
 
-    <style>
-        body{
-            background:#0b4a8b;
-            font-family:Arial,sans-serif;
-        }
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#0b4a8b;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
 
-        .login-container{
-            width:90%;
-            max-width:450px;
-            margin:100px auto;
-            background:white;
-            padding:30px;
-            border-radius:10px;
-        }
+.login-container{
+    background:white;
+    width:90%;
+    max-width:450px;
+    padding:35px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.25);
+}
 
-        .login-container h2{
-            font-size:32px;
-            text-align:center;
-            color:#0b4a8b;
-        }
+.login-container h2{
+    text-align:center;
+    color:#0b4a8b;
+    font-size:32px;
+    margin-bottom:25px;
+}
 
-        .login-container input{
-            width:100%;
-            padding:15px;
-            margin:10px 0;
-            font-size:18px;
-            box-sizing:border-box;
-        }
+.login-container input{
+    width:100%;
+    padding:15px;
+    margin:12px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:18px;
+    box-sizing:border-box;
+}
 
-        .login-container button{
-            width:100%;
-            padding:15px;
-            font-size:18px;
-            background:#0b4a8b;
-            color:white;
-            border:none;
-        }
-    </style>
+.login-container button{
+    width:100%;
+    padding:15px;
+    margin-top:10px;
+    background:#0b4a8b;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.login-container button:hover{
+    background:#08396b;
+}
+</style>
 </head>
 
 <body>
