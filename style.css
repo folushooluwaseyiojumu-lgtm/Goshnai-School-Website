@@ -1408,7 +1408,20 @@ nav a:hover{
 .login-container h2 {
     color: #0b4a8b;
 }
+body{
+    background:#0b4a8b;
+    font-family:Arial, sans-serif;
+}
 
+.login-container{
+    width:90%;
+    max-width:400px;
+    margin:100px auto;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 0 15px rgba(0,0,0,0.3);
+}
 .login-container input {
     width: 100%;
     padding: 12px;
