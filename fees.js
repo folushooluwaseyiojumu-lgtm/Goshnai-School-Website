@@ -1185,8 +1185,27 @@ function submitTransfer() {
 
         return;
     }
-    alert("Payment submitted successfully");
-}
+    let payments =
+    JSON.parse(
+        localStorage.getItem("pendingPayments")
+    ) || [];
+
+payments.push({
+    reference: "GMA-" + Date.now(),
+    amount: amount,
+    date: new Date().toLocaleString(),
+    status: "Pending Verification",
+    studentIds: selectedIds
+});
+
+localStorage.setItem(
+    "pendingPayments",
+    JSON.stringify(payments)
+);
+
+alert(
+    "Payment submitted successfully and sent for verification."
+);
     // =====================================
 // LOAD PAGE
 // =====================================
